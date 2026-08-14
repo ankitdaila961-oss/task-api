@@ -44,6 +44,19 @@ router.get('/', (req, res) => {
   res.json(tasks);
 });
 
+// GET /tasks/:id
+router.get('/:id', (req, res) => {
+  const task = taskService.findById(req.params.id);
+
+  if (!task) {
+    return res.status(404).json({
+      error: 'Task not found',
+    });
+  }
+
+  res.json(task);
+});
+
 // POST /tasks
 router.post('/', (req, res) => {
   const error = validateCreateTask(req.body);
