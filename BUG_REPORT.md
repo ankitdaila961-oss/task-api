@@ -1,23 +1,49 @@
 # Bug Report – Task API
 
-## Overview
+## 1. Overview
 
-During the review and testing of the Task API, multiple functional issues were identified in the existing implementation.
+During the review and testing of the existing Task API, multiple functional issues were identified in the implementation.
 
-Each issue was handled using the following approach:
+The purpose of this bug investigation was to:
 
-1. Identify the potential issue.
-2. Reproduce the issue using an automated test.
-3. Confirm the failing behavior.
-4. Implement the smallest appropriate fix.
-5. Run the complete test suite.
-6. Verify that the fix does not break existing functionality.
+1. Understand the existing API behavior.
+2. Identify incorrect or unexpected behavior.
+3. Reproduce each issue through automated tests.
+4. Confirm the root cause.
+5. Implement the smallest appropriate fix.
+6. Add regression tests where required.
+7. Run the complete test suite after making changes.
+8. Verify that existing functionality was not broken.
 
-After the fixes and additional feature implementation, the complete test suite passes successfully.
+In addition to fixing the identified issues, a task assignment feature was implemented with proper validation and API-level tests.
 
-### Final Test Result
+---
+
+# 2. Summary of Identified Issues
+
+| # | Issue | Severity | Status |
+|---|---|---|---|
+| 1 | Incorrect pagination offset | Medium | Fixed |
+| 2 | Partial status matching | Medium | Fixed |
+| 3 | Task priority changed when completing a task | Medium | Fixed |
+
+Additional feature implemented:
+
+| Feature | Status |
+|---|---|
+| Task assignment endpoint | Implemented |
+| Assignee validation | Implemented |
+| Assignment API tests | Implemented |
+
+---
+
+# 3. Bug 1 – Incorrect Pagination Offset
+
+## Severity
+
+**Medium**
+
+## Location
 
 ```text
-Test Suites: 2 passed, 2 total
-Tests:       38 passed, 38 total
-Failures:    0
+src/services/taskService.js
